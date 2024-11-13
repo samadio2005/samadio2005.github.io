@@ -24,6 +24,13 @@
             width: 100%;
             height: 100%;
             z-index: 1;
+            background-color: rgba(255, 255, 255, 0.5); /* Light overlay to distinguish ad area */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: black;
+            font-weight: bold;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -33,10 +40,10 @@
     <iframe 
         id="videoFrame" 
         src="https://www.web24iptv.online/player/sport/afrosport.php?autoplay=1" 
-        width="854" 
-        height="480" 
+        width="560" 
+        height="315" 
         frameborder="0" 
-        allowfullscreen>
+        allow="autoplay; fullscreen">
     </iframe>
     <a href="#" 
        class="ad-link" 

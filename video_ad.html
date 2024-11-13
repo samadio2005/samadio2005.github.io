@@ -32,7 +32,7 @@
 <div class="video-container">
     <iframe 
         id="videoFrame" 
-        src="https://www.web24iptv.online/player/sport/afrosport.php" 
+        src="https://www.web24iptv.online/player/sport/afrosport.php?autoplay=1" 
         width="560" 
         height="315" 
         frameborder="0" 
@@ -49,7 +49,8 @@
     document.getElementById('adLink').addEventListener('click', function(event) {
         event.preventDefault(); // Prevent default action of the link
         const videoFrame = document.getElementById('videoFrame');
-        videoFrame.src += "?autoplay=1"; // Add autoplay parameter to play the video
+        // If you want to ensure autoplay happens after clicking the ad link
+        videoFrame.src = "https://www.web24iptv.online/player/sport/afrosport.php?autoplay=1"; // Set autoplay parameter
         window.open("https://chikraighotoops.com/4/7482977", "_blank"); // Open ad link in new tab
     });
 </script>

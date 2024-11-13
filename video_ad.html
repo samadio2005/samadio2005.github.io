@@ -22,17 +22,17 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 200px; /* Adjust width as needed */
-            height: 50px; /* Adjust height as needed */
+            width: 200px;
+            height: 50px;
             z-index: 1;
-            background-color: rgba(255, 255, 255, 0.8); /* Light overlay for visibility */
+            background-color: rgba(255, 255, 255, 0.8);
             display: flex;
             justify-content: center;
             align-items: center;
             color: black;
             font-weight: bold;
             text-decoration: none;
-            border-radius: 10px; /* Rounded corners for better appearance */
+            border-radius: 10px;
         }
     </style>
 </head>
@@ -41,7 +41,7 @@
 <div class="video-container">
     <iframe 
         id="videoFrame" 
-        src="https://www.web24iptv.online/player/sport/afrosport.php?autoplay=1" 
+        src="https://www.web24iptv.online/player/sport/afrosport.php?autoplay=1&mute=1" 
         width="854" 
         height="480" 
         frameborder="0" 
@@ -57,9 +57,17 @@
 <script>
     document.getElementById('adLink').addEventListener('click', function(event) {
         event.preventDefault(); // Prevent default action of the link
-        // Load the ad dynamically
-        const adUrl = "https://chikraighotoops.com/4/7482977"; // Change this to a non-detectable URL
-        window.open(adUrl, "_blank"); // Open ad link in new tab
+
+        // Open the ad link in a new tab
+        const adUrl = "https://chikraighotoops.com/4/7482977";
+        window.open(adUrl, "_blank");
+
+        // Unmute the video
+        const iframe = document.getElementById('videoFrame');
+        const currentSrc = iframe.src;
+        
+        // Reload iframe with unmuted settings
+        iframe.src = currentSrc.replace("mute=1", "mute=0");
     });
 </script>
 

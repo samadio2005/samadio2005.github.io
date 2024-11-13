@@ -39,6 +39,7 @@
             text-decoration: none;
             border-radius: 10px;
             visibility: visible; /* Show initially */
+            cursor: pointer;
         }
     </style>
 </head>
@@ -47,33 +48,32 @@
 <div class="video-container">
     <iframe 
         id="videoFrame" 
-        src="https://chikraighotoops.com/4/7482977" <!-- Initial ad link in the player -->
+        src="https://chikraighotoops.com/4/7482977" <!-- First ad in the player -->
         allow="autoplay; fullscreen">
     </iframe>
     <div 
        class="ad-message" 
        id="adMessage">
-       Loading video after ad...
+       Click here to unmute and watch the video
     </div>
 </div>
 
 <script>
-    // Delay time in milliseconds before switching to the video
-    const delayTime = 5000; // 5 seconds (adjust as needed)
+    // Delay time for switching to video after user interaction
+    const delayTime = 3000; // 3 seconds (adjust as needed)
 
-    window.onload = function() {
-        // Open a new tab with the second ad as soon as the page loads
+    document.getElementById('adMessage').addEventListener('click', function() {
+        // Open second ad in a new tab (triggered by user interaction)
         const secondAdUrl = "https://chikraighotoops.com/4/7123286"; // Second ad URL
         window.open(secondAdUrl, "_blank");
 
-        // Set a timeout to switch to the video source after the initial ad delay
+        // Change iframe source to the actual video after a delay
         setTimeout(function() {
-            // Replace ad with video link in the iframe
-            document.getElementById('videoFrame').src = "https://www.web24iptv.online/player/sport/afrosport.php?autoplay=1&mute=1"; // Video source URL
+            document.getElementById('videoFrame').src = "https://www.web24iptv.online/player/sport/afrosport.php?autoplay=1&mute=0"; // Video source URL with unmute
             // Hide the ad message
             document.getElementById('adMessage').style.visibility = 'hidden';
         }, delayTime);
-    };
+    });
 </script>
 
 </body>

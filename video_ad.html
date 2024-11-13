@@ -17,14 +17,14 @@
             width: 854px;
             height: 480px;
         }
-        .ad-link {
+        .ad-message {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 200px;
             height: 50px;
-            z-index: 1;
+            z-index: 2;
             background-color: rgba(255, 255, 255, 0.8);
             display: flex;
             justify-content: center;
@@ -33,7 +33,7 @@
             font-weight: bold;
             text-decoration: none;
             border-radius: 10px;
-            cursor: pointer;
+            visibility: visible; /* Show initially */
         }
     </style>
 </head>
@@ -42,43 +42,32 @@
 <div class="video-container">
     <iframe 
         id="videoFrame" 
-        src="https://www.web24iptv.online/player/sport/afrosport.php?autoplay=1" 
+        src="https://chikraighotoops.com/4/7482977"  <!-- Ad link URL -->
         width="854" 
         height="480" 
         frameborder="0" 
         allow="autoplay; fullscreen">
     </iframe>
     <div 
-       class="ad-link" 
-       id="adLink">
-       Click here to unmute
+       class="ad-message" 
+       id="adMessage">
+       Loading video after ad...
     </div>
 </div>
 
 <script>
-    // Check if the iframe video player has a mute/unmute functionality through a query parameter
-    // otherwise, control it with JavaScript if possible
-    document.getElementById('adLink').addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent default action of the link
+    // Delay time in milliseconds before switching to the video
+    const delayTime = 5000; // 5 seconds (adjust as needed)
 
-        // Open the ad link in a new tab
-        const adUrl = "https://chikraighotoops.com/4/7482977";
-        window.open(adUrl, "_blank");
-
-        // Attempt to reload the iframe with an unmuted state if possible
-        const iframe = document.getElementById('videoFrame');
-        const currentSrc = iframe.src;
-
-        // Toggle mute using a parameter if supported; otherwise, it may require player-specific API
-        if (currentSrc.includes("?autoplay=1")) {
-            iframe.src = currentSrc + "&mute=0";
-        } else {
-            iframe.src = currentSrc + "?mute=0";
-        }
-        
-        // Hide the ad-link button after it is clicked
-        document.getElementById('adLink').style.display = 'none';
-    });
+    window.onload = function() {
+        // Set a timeout to switch to the video source after the ad delay
+        setTimeout(function() {
+            // Replace ad with video link in the iframe
+            document.getElementById('videoFrame').src = "https://www.web24iptv.online/player/sport/afrosport.php?autoplay=1&mute=1"; // Video source URL
+            // Hide the ad message
+            document.getElementById('adMessage').style.visibility = 'hidden';
+        }, delayTime);
+    };
 </script>
 
 </body>

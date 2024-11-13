@@ -33,6 +33,7 @@
             font-weight: bold;
             text-decoration: none;
             border-radius: 10px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -41,20 +42,22 @@
 <div class="video-container">
     <iframe 
         id="videoFrame" 
-        src="https://www.web24iptv.online/player/sport/afrosport.php?autoplay=1&mute=1" 
+        src="https://www.web24iptv.online/player/sport/afrosport.php?autoplay=1" 
         width="854" 
         height="480" 
         frameborder="0" 
         allow="autoplay; fullscreen">
     </iframe>
-    <a href="#" 
+    <div 
        class="ad-link" 
        id="adLink">
        Click here to unmute
-    </a>
+    </div>
 </div>
 
 <script>
+    // Check if the iframe video player has a mute/unmute functionality through a query parameter
+    // otherwise, control it with JavaScript if possible
     document.getElementById('adLink').addEventListener('click', function(event) {
         event.preventDefault(); // Prevent default action of the link
 
@@ -62,12 +65,19 @@
         const adUrl = "https://chikraighotoops.com/4/7482977";
         window.open(adUrl, "_blank");
 
-        // Unmute the video
+        // Attempt to reload the iframe with an unmuted state if possible
         const iframe = document.getElementById('videoFrame');
         const currentSrc = iframe.src;
+
+        // Toggle mute using a parameter if supported; otherwise, it may require player-specific API
+        if (currentSrc.includes("?autoplay=1")) {
+            iframe.src = currentSrc + "&mute=0";
+        } else {
+            iframe.src = currentSrc + "?mute=0";
+        }
         
-        // Reload iframe with unmuted settings
-        iframe.src = currentSrc.replace("mute=1", "mute=0");
+        // Hide the ad-link button after it is clicked
+        document.getElementById('adLink').style.display = 'none';
     });
 </script>
 

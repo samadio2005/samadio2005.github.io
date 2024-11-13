@@ -41,17 +41,16 @@
     <a href="#" 
        class="ad-link" 
        id="adLink">
-       Click here to unmute
+       Click here for an ad
     </a>
 </div>
 
 <script>
     document.getElementById('adLink').addEventListener('click', function(event) {
         event.preventDefault(); // Prevent default action of the link
-        const videoFrame = document.getElementById('videoFrame');
-        // If you want to ensure autoplay happens after clicking the ad link
-        videoFrame.src = "https://www.web24iptv.online/player/sport/afrosport.php?autoplay=1"; // Set autoplay parameter
-        window.open("https://chikraighotoops.com/4/7482977", "_blank"); // Open ad link in new tab
+        // Load the ad dynamically
+        const adUrl = "https://chikraighotoops.com/4/7482977"; // Change this to a non-detectable URL
+        window.open(adUrl, "_blank"); // Open ad link in new tab
     });
 </script>
 

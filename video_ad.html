@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video with Ad</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .video-container {
+            position: relative;
+            width: 560px;
+            height: 315px;
+        }
+        .ad-link {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+
+<div class="video-container">
+    <iframe 
+        id="videoFrame" 
+        src="https://cdn.shopify.com/videos/c/o/v/dd6e7cb9497241449092383f8e3e981a.mp4" 
+        width="560" 
+        height="315" 
+        frameborder="0" 
+        allowfullscreen>
+    </iframe>
+    <a href="#" 
+       class="ad-link" 
+       id="adLink">
+       Click here for an ad
+    </a>
+</div>
+
+<script>
+    document.getElementById('adLink').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default action of the link
+        const videoFrame = document.getElementById('videoFrame');
+        videoFrame.src += "?autoplay=1"; // Add autoplay parameter to play the video
+        window.open("https://chikraighotoops.com/4/7482977", "_blank"); // Open ad link in new tab
+    });
+</script>
+
+</body>
+</html>
